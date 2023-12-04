@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+    <script th:src="@{/static/js/script.js}"></script>
+</head>
+<body>
+<div class="container">
+    <form action="#" th:action="@{/code/edit/{id}(id=${snippet.id})}" method="post">
+        <div>
+            <label for="snippet-input">Edit Snippet:</label>
+            <textarea id="snippet-input" class="code_snippet" name="code" th:field="*{snippet.code}" rows="10" cols="50"></textarea>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+            <button id="backBtn" type="button" onclick="backToLatest()">Back to latest</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

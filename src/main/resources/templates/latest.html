@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Latest</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+    <link rel="stylesheet" target="_blank"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script th:src="@{/static/js/script.js}"></script>
+</head>
+<body>
+<div id="user_panel">
+    Username: <span th:text="${username}"></span>
+    <div th:if="${role.toString()} == 'ADMIN'">
+        ADMINISTRATOR
+    </div>
+    <button id="logout" type="button" onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+    <div class="user_actions">
+        <h1>Code-sharing Platform</h1>
+        <div class="add_snippet">
+            <button id="addSnippetBtn" type="button" onclick="addNewSnippet()">Add a new snippet</button>
+        </div>
+        <div class="show_users" th:if="${role.toString() == 'ADMIN'}">
+            <button id="usersBtn" type="button" onclick="showUsers()">Show users</button>
+        </div>
+        <div class="delete_all" th:if="${role.toString() == 'ADMIN' and !latest.isEmpty()}">
+            <button id="deleteAllBtn" type="button" onclick="deleteAllSnippets()">Delete all snippets</button>
+        </div>
+    </div>
+
+    <hr style="width: 100%; margin: 15px 0;">
+
+    <div th:if="${latest.isEmpty()}">
+        There are no snippets. Be the first one!
+    </div>
+
+    <div th:each="snippet : ${latest}">
+        <div class="snippet-block">
+            <div>
+                Author: <span id="author_name" th:text="${snippet.author.username}"></span><br>
+                Created: <span id="load_date" th:text="${snippet.date}"></span>
+                <div th:if="${snippet.editDate != null}" class="edit_date">
+                    Edited: <span id="edit_date" th:text="${snippet.editDate}"></span>
+                </div>
+                <pre class="code_snippet">
+                    <code th:text="${snippet.code}"></code>
+                </pre>
+                <div class="snippet_actions">
+                    <div th:if="${snippet.author.username == username}" class="edit_snippet">
+                        <button id="editBtn" type="button" th:onclick="'editSnippet(' + ${snippet.id} + ');'">
+                            Edit snippet
+                        </button>
+                    </div>
+                    <div th:if="${snippet.author.username == username or role.toString() == 'ADMIN'}" class="delete_snippet">
+                        <button id="deleteBtn" type="button" th:onclick="'deleteSnippet(' + ${snippet.id} + ');'">
+                            Delete snippet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+</body>
+</html>

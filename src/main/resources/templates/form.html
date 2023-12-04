@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+    <script th:src="@{/static/js/script.js}"></script>
+</head>
+<body>
+<div class="container">
+    <form class="form">
+        <div>
+            <label for="snippet-input">Code Snippet:</label>
+            <textarea id="snippet-input" class="code_snippet" placeholder="Enter your snippet"></textarea>
+        </div>
+        <div>
+            <button id="send_snippet" type="button" onclick="send()">Submit</button>
+            <button id="backBtn" type="button" onclick="backToLatest()">Back to latest</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
