@@ -82,9 +82,9 @@ The Code-sharing Platform is built using the following technologies:
 - Administrators can manage users and delete all snippets.
 
 ## Screenshots
-![img_2.png](img_2.png)
-![img.png](img.png)
-![img_1.png](img_1.png)
+![img_2](https://github.com/VelikanovDev/Code-sharing-platform/assets/125138065/a371077c-2a3a-4252-80a6-8bc7e4000267)
 
+![img](https://github.com/VelikanovDev/Code-sharing-platform/assets/125138065/eba0e348-143d-4533-8799-1db22aebdcee)
 
+![img_1](https://github.com/VelikanovDev/Code-sharing-platform/assets/125138065/110473f8-fbae-4c53-a869-b948c785ebd1)
 
